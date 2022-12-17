@@ -3,18 +3,63 @@
     # # # Author:
     # # # Naval Research Laboratory, Marine Meteorology Division
     # # # 
-    # # # This program is free software:
-    # # # you can redistribute it and/or modify it under the terms
-    # # # of the NRLMMD License included with this program.
-    # # # 
-    # # # If you did not receive the license, see
+    # # # This program is free software: you can redistribute it and/or modify it under
+    # # # the terms of the NRLMMD License included with this program. This program is
+    # # # distributed WITHOUT ANY WARRANTY; without even the implied warranty of
+    # # # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the included license
+    # # # for more details. If you did not receive the license, for more information see:
     # # # https://github.com/U-S-NRL-Marine-Meteorology-Division/
-    # # # for more information.
-    # # # 
-    # # # This program is distributed WITHOUT ANY WARRANTY;
-    # # # without even the implied warranty of MERCHANTABILITY
-    # # # or FITNESS FOR A PARTICULAR PURPOSE.
-    # # # See the included license for more details.
+
+
+# v1.6.0: 2022-12-01, open source release updates
+## GEOIPS#119: 2022-12-01, update README, uncompress script
+### Documentation
+#### README.md
+* Remove explicit installation steps, link to geoips
+### Test Repo Updates
+* Standardize uncompress_test_data.sh
+
+
+# v1.5.3: 2022-11-07, update METOP-B/C UHR test data sets
+
+## GEOIPS#8: 2022-10-22, add overlay products
+### Test Repo Updates
+#### Rearranged METOP-C BYU UHR datasets
+* Create separate directories for the different storms
+```
+deleted: data/metopc_byu_uhr.tgz
+new file: data/20210421_metopc_byu_uhr_tc2021wp02surigae.tgz
+new file: data/20220519_metopc_byu_uhr_tc2022sh26gina.tgz
+new file: data/20220911_metopc_byu_uhr_tc2022wp14muifa.tgz
+```
+#### Add recent METOP-B BYU UHR test cases
+```
+new file: data/20220911_metopb_byu_uhr_tc2022wp14muifa.tgz
+new file: data/20221017_metopb_byu_uhr_tc2022wp23nesat.tgz
+```
+#### Rename METOP-B KNMI directory name for consistency
+```
+renamed: data/metopb_knmi_tc2022wp14muifa/ascat_20220911_132700_metopb_51797_eps_o_250_3202_ovw.l2.nc -> data/20220911_metopb_knmi_tc2022wp14muifa/ascat_20220911_132700_metopb_51797_eps_o_250_3202_ovw.l2.nc
+renamed: data/metopb_knmi_tc2022wp14muifa/ascat_20220911_132700_metopb_51797_eps_o_coa_3202_ovw.l2.nc -> data/20220911_metopb_knmi_tc2022wp14muifa/ascat_20220911_132700_metopb_51797_eps_o_coa_3202_ovw.l2.nc
+```
+
+# v1.5.2: 2022-09-22, and new MUIFA ASCAT UHR/KNMI test cases, with bg_data
+
+## GEOIPS#47: 2022-09-21, add bg data and new ASCAT UHR test cases
+### Test Repo Updates
+* new file: **.gitattributes**
+    * Track tgz files with lfs 
+* new file: **bg_data/ahi_20220911_1330_tc2022wp14muifa.tgz**
+    * Background data for ASCAT UHR test cases
+* modified: **data/metopc_byu_uhr.tgz**
+    * Add new data format (as of 20220826, filename formats and internal format changed)
+* modified: **uncompress_test_data.sh**
+    * Update to use shared $GEOIPS/tests/utils/uncompress_test_data.sh script
+    * Uncompress bg data and ASCAT UHR.
+* new file: **data/metopb_knmi_tc2022wp14muifa/ascat_20220911_132700_metopb_51797_eps_o_250_3202_ovw.l2.nc**
+    * KNMI 25km dataset, to be used for comparison (and bg_data reuse)
+* new file: **data/metopb_knmi_tc2022wp14muifa/ascat_20220911_132700_metopb_51797_eps_o_coa_3202_ovw.l2.nc**
+    * KNMI 12.5km dataset, to be used for comparison (and bg_data reuse)
 
 
 # v1.5.1: 2022-07-14, geoips2->geoips, consolidate test outputs, update compress scripts
@@ -33,6 +78,7 @@
 * **README.md**
     * Add clone for config
     * Update test scripts to use $GEOIPS simplified direct test calls
+    * Add dataset sources to README
 * **NOTES and logs**
     * Add notes and real-time logs regarding GINA test dataset
     * real-time processing failed to produce output, must investigate at some point
@@ -51,7 +97,7 @@
         * ASCAT UHR TC2021WP02: A single pixel changed to political boundary in top right corner
 
 
-# v1.3.0: 2021-11-25, atcf->tc, remove satops
+# v1.3.0: 2021-11-25, atcf->tc, update output path
 
 ### Breaking Test Repo Updates
     * Update TC YAML metadata outputs
